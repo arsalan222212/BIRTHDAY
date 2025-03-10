@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Happy Birthday Haadu!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #1a1a1a;
+            font-family: 'Great Vibes', cursive;
+            overflow-x: hidden;
+            touch-action: manipulation;
+        }
+
+        .birthday-title {
+            position: fixed;
+            top: 20px;
+            font-size: 3.5em;
+            color: #ff6b6b;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            width: 100%;
+            padding: 15px;
+            z-index: 999;
+            animation: titleFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes titleFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            margin-top: 150px;
+        }
+
+        .cake {
+            width: 300px;
+            height: 200px;
+            position: relative;
+            margin: 0 auto;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .cake-layer {
+            position: absolute;
+            width: 100%;
+            height: 80px;
+            background: linear-gradient(45deg, #ff6b6b, #ff8787);
+            border-radius: 15px 15px 0 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .cake-layer:nth-child(2) {
+            bottom: 0;
+            height: 120px;
+            background: linear-gradient(45deg, #ff8787, #ffa8a8);
+        }
+
+        .cake-top {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            height: 40px;
+            background: #fff5eb;
+            border-radius: 10px;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        }
+
+        .cake-name {
+            position: absolute;
+            bottom: 60%;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #fff;
+            font-size: 2em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            z-index: 3;
+        }
+
+        .message {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            max-width: 300px;
+            max-height: 80vh;
+            padding: 15px;
+            background: rgba(0,0,0,0.7);
+            color: #fff;
+            border-radius: 10px;
+            font-size: 0.9em;
+            line-height: 1.4;
+            font-family: Arial, sans-serif;
+            animation: fadeIn 2s ease-out;
+            overflow: auto;
+            z-index: 1000;
+        }
+
+        .cake-side {
+            position: absolute;
+            left: -50px;
+            top: 30%;
+            width: 100px;
+            height: 150px;
+            background: linear-gradient(45deg, #ff8787, #ffa8a8);
+            border-radius: 10px;
+            transform: rotate(-15deg);
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.2);
+            animation: sideFloat 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes sideFloat {
+            0%, 100% { transform: rotate(-15deg) translateY(0); }
+            50% { transform: rotate(-15deg) translateY(-10px); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .candle {
+            position: absolute;
+            top: -40px;
+            width: 8px;
+            height: 40px;
+            background: #fff;
+            border-radius: 3px;
+            animation: flame 1.5s ease-in-out infinite;
+        }
+
+        .candle::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            width: 15px;
+            height: 15px;
+            background: #ffd700;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            transform: translateX(-50%);
+        }
+
+        @keyframes flame {
+            0%, 100% { transform: scaleY(1); }
+            50% { transform: scaleY(1.1); }
+        }
+
+        #firework-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <canvas id="firework-canvas"></canvas>
+    
+    <h1 class="birthday-title">Happy Birthday Bot Haadu! 🎉</h1>
+
+    <div class="container">
+        <div class="cake-side"></div>
+        <div class="cake">
+            <div class="cake-name">Haadu</div>
+            <div class="cake-layer"></div>
+            <div class="cake-layer"></div>
+            <div class="cake-top"></div>
+            <div class="candle" style="left: 20%"></div>
+            <div class="candle" style="left: 40%"></div>
+            <div class="candle" style="left: 60%"></div>
+            <div class="candle" style="left: 80%"></div>
+        </div>
+    </div>
+
+    <div class="message">
+        ✨ On this special day, I just want to remind you how amazing you are. You bring so much joy, laughter, and warmth into my life, and I’m truly grateful for you. May this year bring you endless happiness, success, and all the love you deserve. Stay as wonderful as you are! ❤🎉
+    </div>
+
+    <script>
+        const canvas = document.getElementById('firework-canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let particles = [];
+        const colors = ['#ff6b6b', '#ffd700', '#35a7ff', '#94ebcd', '#ff884b'];
+
+        class Particle {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+                this.radius = Math.random() * 3 + 1;
+                this.color = colors[Math.floor(Math.random() * colors.length)];
+                this.velocity = {
+                    x: (Math.random() - 0.5) * 6,
+                    y: (Math.random() - 0.5) * 6
+                };
+                this.alpha = 1;
+            }
+
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = this.alpha;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+                ctx.restore();
+            }
+
+            update() {
+                this.x += this.velocity.x;
+                this.y += this.velocity.y;
+                this.alpha -= 0.015;
+                this.velocity.x *= 0.98;
+                this.velocity.y *= 0.98;
+                this.draw();
+            }
+        }
+
+        function animateFireworks() {
+            ctx.fillStyle = 'rgba(26, 26, 26, 0.1)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            particles.forEach((particle, index) => {
+                if (particle.alpha > 0) {
+                    particle.update();
+                } else {
+                    particles.splice(index, 1);
+                }
+            });
+            
+            requestAnimationFrame(animateFireworks);
+        }
+
+        function createFirework(e) {
+            const x = e.clientX || e.touches[0].clientX;
+            const y = e.clientY || e.touches[0].clientY;
+            
+            for (let i = 0; i < 40; i++) {
+                particles.push(new Particle(x, y));
+            }
+        }
+
+        window.addEventListener('click', createFirework);
+        window.addEventListener('touchstart', createFirework);
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        animateFireworks();
+    </script>
+</body>
+</html>
